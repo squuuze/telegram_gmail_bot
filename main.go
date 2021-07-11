@@ -4,6 +4,7 @@ import (
 	"github.com/sirupsen/logrus"
 
 	"github.com/squuuze/telegram_gmail_bot/config"
+	"github.com/squuuze/telegram_gmail_bot/telegram"
 )
 
 func main() {
@@ -17,4 +18,9 @@ func main() {
 	log.SetFormatter(&logFormatter)
 	log.SetLevel(logrus.DebugLevel)
 	log.Printf("Provided config: %v", cfg.String())
+
+	newTgBot := telegram.NewTelegramBot(cfg.TelegramApiToken, log)
+	if err := newTgBot.Start(); err != nil {
+		log.Panic(err)
+	}
 }
