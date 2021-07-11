@@ -15,6 +15,8 @@ var (
 
 type Config struct {
 	TelegramApiToken string `env:"TELEGRAM_API_TOKEN"`
+	ClientID         string `env:"CLIENT_ID"`
+	ClientSecret     string `env:"CLIENT_SECRET"`
 }
 
 func (c *Config) String() string {
